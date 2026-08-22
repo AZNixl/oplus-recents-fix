@@ -11,6 +11,9 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      - name: 移除本机 SDK 路径配置
+        run: rm -f local.properties
+
       - name: 安装 JDK 17
         uses: actions/setup-java@v4
         with:
@@ -19,6 +22,9 @@ jobs:
 
       - name: 安装 Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: 安装 SDK Platform 34
+        run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
       - name: 安装 Gradle
         uses: gradle/actions/setup-gradle@v4
