@@ -195,7 +195,7 @@ public class HookMain implements IXposedHookLoadPackage {
 
             boolean inSplit = false;
             try {
-                int actDisplayId = ((Activity) activity).getDisplayId();
+                int actDisplayId = displayId;
                 Object r = multiWindowManager
                         .getMethod("isInSplitScreenMode", Integer.class)
                         .invoke(null, actDisplayId);
